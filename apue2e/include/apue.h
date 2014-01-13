@@ -17,6 +17,7 @@
 #ifndef TIOCGWINSZ
 #include <sys/ioctl.h>
 #endif
+
 #include <stdio.h>		/* for convenience */
 #include <stdlib.h>		/* for convenience */
 #include <stddef.h>		/* for offsetof */

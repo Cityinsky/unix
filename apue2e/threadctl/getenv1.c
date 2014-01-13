@@ -1,4 +1,6 @@
+#include <apue.h>
 #include <limits.h>
+
 #include <string.h>
 
 static char envbuf[ARG_MAX];
