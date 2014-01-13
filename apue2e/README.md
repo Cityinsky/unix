@@ -27,3 +27,6 @@ common ones:
     - Add the following line to apue.2e/threadctl/getenv1.c and apue.2e/threadctl/getenv3.c
 
         #include "apue.h"
+        
+        编译的过程中可能会出现的一个问题，也是一个网友曾经问到的问题，就是在编译中出现这个的错误，提示nawk command cannot be found。这个问题可能的原因是，有些操作系统的内核版本较低，可能还不支持nawk(new awk)这个命令。但应该支持awk命令。因此，问题的解决方法就是将相关文件中的nawk命令替换为awk，或者为系统添加一个别名alias，alias nawk awk。这样在编一的过程中，遇到nawk命令时，实际会去执行awk命令。
+3
