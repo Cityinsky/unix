@@ -1,24 +1,29 @@
-# Instructions for Debian derivatives
+Instructons on CentOS
+----------------------
 
-- Install required packages
+There probably will be some errors occur when you excuting make. Here are some
+common ones:
 
-        $ sudo apt-get install build-essential
+1. 'error: stropts.h: No such file or directory'
 
-- Fork this repository
 
-- (Preferably) Build examples and APUE library
+  Solution:
 
-        $ make
+    shell> cd /tmp/
+    shell> wget http://ftp.gnu.org/gnu/libc/glibc-2.11.tar.gz
+    shell> tar xzvf glibc-2.11.tar.gz
+    shell> cp ./glibc-2.11/streams/stropts.h /usr/include
+    shell> cp ./glibc-2.11/bits/stropts.h /usr/include/bits
+    shell> cp ./glibc-2.11/sysdeps/x86_64/bits/xtitypes.h /usr/include/bits
 
-- Populate your own examples in `local*` subdirectories.  For example:
+2. error: 'ARG_MAX' undeclared here
 
-        $ cd local
-        $ $EDITOR local.c
+  Solution:
 
-  **Please note that the main source filename must be same as the subdirectory name (i.e. `local1/local1.c`)**
+    - Add the following line to apue.2e/include/apue.h
 
-- Build and run your example
+        #define ARG_MAX 4096
 
-        $ cd .. # chdir to top dir
-        $ make
-        $ local/local
+    - Add the following line to apue.2e/threadctl/getenv1.c and apue.2e/threadctl/getenv3.c
+
+        #include "apue.h"
